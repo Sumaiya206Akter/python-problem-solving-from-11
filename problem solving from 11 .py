@@ -167,3 +167,49 @@ try:
 except ValueError:# if user don't enter a vaied input than show a message 
     print("please enter a valid number")
     
+    # ------------------------------problem 18----------------------
+# Q--Write a Python program that takes the coefficients (a, b, c) of a quadratic equation as input and calculates and prints the real roots (if they exist) or a message indicating the complex roots.
+
+import math # import math for real root 
+import cmath # import cmath for complex root
+def solve_quadratic(a, b, c): #define a funciton to solve the  quadratic equation
+    if a == 0: # if coefficient of x^2 is 0 then this is not a quadratic equation 
+        answer = -c/b #formula to solve a linear equation. bx + c = 0 then x = -b/c
+        print(f"this is not a quadratic equation. this is a linear eqation and the answer is {answer}") # print the solution of linear equation and alert that this is not a quadratic equation 
+    else:
+        sqrt = b**2 - 4*a*c # calculation of radicand
+        if sqrt >= 0: # if radicand is greater than 0, then the root is real and we can solve the equation using the following formula 
+        # a quadratic equation has two roots
+            x1 = (-b + math.sqrt(sqrt))/2*a # first root 
+            x2  = (-b -math.sqrt(sqrt))/2*a # second root
+            print(f"the solution is (x,y) = ({x1},{x2}) ") # print the two solution of the quadratic equation
+        #if radicand is less than 0, then the root is a complex number and we can solve the equation using the following formula
+        else:
+            x1 = (-b + cmath.sqrt(sqrt))/2*a # root 1
+            x2  = (-b -cmath.sqrt(sqrt))/2*a # root 2
+            print(f"the complex roots is {x1} and {x2}") # this will print the two complex roots
+
+a = int(input("enter coefficient of x^2:")) #get coefficient input from user 
+b = int(input("enter coefficient of x:")) #get coefficient input from user 
+c = int(input("enter constent number:"))#get coefficient input from user 
+# solve a quadratic equation of the form ax^2 + bx + c =0
+# by using this formula x = (-b +- sqrt(b^2-4ac))/2a
+
+solve_quadratic(a,b,c) #call the function to solve the equation 
+# # -------------------------------problem 19 ---------------------
+# Q---Write a Python program that takes an integer as input and prints whether the number falls within the ranges: 0-50, 51-100, 101-150, or above 150.
+try:
+    number = int(input("enter an integer number:"))# get integer input from user
+    # check which range the number falls into
+    if number >=0 and number<= 50: # check if the number is between 0 and 50
+        print(f"{number} is in the range 0-50")# print the range of the number falls into 
+    elif number >=51 and number<= 100:# check if the number is between 51 and 100
+        print(f"{number} is in the range 51-100")# print the range of the number falls into 
+    elif number >=101 and number<= 150:# check if the number is between 101 and 150
+        print(f"{number} is in the range 101-150")# print the range of the number falls into 
+    elif number >=150:# check if the number above 150
+        print(f"{number} is above 150") # print the range of the number falls into 
+    else:
+        print("this is an negative number") # if none of the above conditions are met, print this line
+except: 
+    print("something is wrong . please input an integer numebr.")# if user does not input integer then print this line
